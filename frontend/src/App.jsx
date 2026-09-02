@@ -41,7 +41,7 @@ import {
 } from "lucide-react";
 
 // API Base configuration
-const API_BASE = "https://lostlink-zoua.onrender.com";
+const API_BASE = "https://lostlink-zoua.onrender.com/api";
 
 export default function App() {
   // Authentication states
@@ -1088,9 +1088,8 @@ export default function App() {
                         )}
                         <div className="card-badges">
                           <span
-                            className={`badge ${
-                              item.type === "LOST" ? "badge-lost" : "badge-found"
-                            }`}
+                            className={`badge ${item.type === "LOST" ? "badge-lost" : "badge-found"
+                              }`}
                           >
                             {item.type}
                           </span>
@@ -1117,13 +1116,12 @@ export default function App() {
 
                         <div className="card-footer">
                           <span
-                            className={`status-pill ${
-                              item.status === "ACTIVE"
+                            className={`status-pill ${item.status === "ACTIVE"
                                 ? "active"
                                 : item.status === "CLAIMED"
-                                ? "claimed"
-                                : "returned"
-                            }`}
+                                  ? "claimed"
+                                  : "returned"
+                              }`}
                           >
                             <span className="status-pill-dot"></span>
                             {item.status}
@@ -1316,9 +1314,8 @@ export default function App() {
                         )}
                         <div className="card-badges">
                           <span
-                            className={`badge ${
-                              item.type === "LOST" ? "badge-lost" : "badge-found"
-                            }`}
+                            className={`badge ${item.type === "LOST" ? "badge-lost" : "badge-found"
+                              }`}
                           >
                             {item.type}
                           </span>
@@ -1347,13 +1344,12 @@ export default function App() {
 
                         <div className="card-footer">
                           <span
-                            className={`status-pill ${
-                              item.status === "ACTIVE"
+                            className={`status-pill ${item.status === "ACTIVE"
                                 ? "active"
                                 : item.status === "CLAIMED"
-                                ? "claimed"
-                                : "returned"
-                            }`}
+                                  ? "claimed"
+                                  : "returned"
+                              }`}
                           >
                             <span className="status-pill-dot"></span>
                             {item.status}
@@ -1457,9 +1453,8 @@ export default function App() {
                         key={idx}
                         src={`https://lostlink-zoua.onrender.com${img}`}
                         alt="thumb"
-                        className={`detail-thumb ${
-                          activeImageIndex === idx ? "active" : ""
-                        }`}
+                        className={`detail-thumb ${activeImageIndex === idx ? "active" : ""
+                          }`}
                         onClick={() => setActiveImageIndex(idx)}
                       />
                     ))}
@@ -1479,9 +1474,8 @@ export default function App() {
                     }}
                   >
                     <span
-                      className={`badge ${
-                        selectedItem.type === "LOST" ? "badge-lost" : "badge-found"
-                      }`}
+                      className={`badge ${selectedItem.type === "LOST" ? "badge-lost" : "badge-found"
+                        }`}
                     >
                       {selectedItem.type}
                     </span>
@@ -1489,13 +1483,12 @@ export default function App() {
                       {selectedItem.category}
                     </span>
                     <span
-                      className={`status-pill ${
-                        selectedItem.status === "ACTIVE"
+                      className={`status-pill ${selectedItem.status === "ACTIVE"
                           ? "active"
                           : selectedItem.status === "CLAIMED"
-                          ? "claimed"
-                          : "returned"
-                      }`}
+                            ? "claimed"
+                            : "returned"
+                        }`}
                     >
                       <span className="status-pill-dot"></span>
                       {selectedItem.status}
@@ -1649,92 +1642,92 @@ export default function App() {
                   {(!user ||
                     (selectedItem.userId?._id !== (user.id || user._id) &&
                       selectedItem.userId !== (user.id || user._id))) && (
-                    <div className="verification-claim-card">
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "8px",
-                          marginBottom: "4px"
-                        }}
-                      >
-                        <ShieldCheck size={20} color="var(--color-accent-dark)" />
-                        <h3 style={{ fontSize: "1.15rem", fontWeight: 700 }}>
-                          Verify Ownership to Claim
-                        </h3>
-                      </div>
-                      <p
-                        style={{
-                          fontSize: "0.86rem",
-                          color: "var(--text-secondary)"
-                        }}
-                      >
-                        To ensure security, please answer the reporter's verification
-                        question below.
-                      </p>
-
-                      <div className="verification-question-box">
+                      <div className="verification-claim-card">
                         <div
                           style={{
-                            fontSize: "0.78rem",
-                            color: "var(--text-muted)",
-                            textTransform: "uppercase",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px",
                             marginBottom: "4px"
                           }}
                         >
-                          Verification Question:
+                          <ShieldCheck size={20} color="var(--color-accent-dark)" />
+                          <h3 style={{ fontSize: "1.15rem", fontWeight: 700 }}>
+                            Verify Ownership to Claim
+                          </h3>
                         </div>
-                        "{selectedItem.verificationQuestion}"
-                      </div>
-
-                      {selectedItem.status !== "ACTIVE" ? (
-                        <div
+                        <p
                           style={{
-                            padding: "12px",
-                            background: "#FFFFFF",
-                            borderRadius: "var(--radius-sm)",
-                            fontSize: "0.9rem",
-                            color: "var(--text-secondary)",
-                            textAlign: "center",
-                            border: "1px solid var(--border-subtle)"
+                            fontSize: "0.86rem",
+                            color: "var(--text-secondary)"
                           }}
                         >
-                          This item is currently marked as{" "}
-                          <strong>{selectedItem.status}</strong> and is not open for
-                          new claims.
-                        </div>
-                      ) : (
-                        <form onSubmit={handleClaimSubmit}>
-                          <div className="form-group" style={{ marginBottom: "14px" }}>
-                            <label className="form-label">Your Answer</label>
-                            <input
-                              type="text"
-                              className="input-field input-field-noicon"
-                              placeholder="Type your verification answer..."
-                              value={claimAnswer}
-                              onChange={(e) => setClaimAnswer(e.target.value)}
-                              required
-                            />
-                            <div className="form-hint">
-                              Answers are securely checked by LostLink. The correct
-                              answer is never exposed publicly.
-                            </div>
-                          </div>
-                          <button
-                            type="submit"
-                            className="btn btn-primary-dark"
-                            style={{ width: "100%" }}
-                            disabled={loading}
+                          To ensure security, please answer the reporter's verification
+                          question below.
+                        </p>
+
+                        <div className="verification-question-box">
+                          <div
+                            style={{
+                              fontSize: "0.78rem",
+                              color: "var(--text-muted)",
+                              textTransform: "uppercase",
+                              marginBottom: "4px"
+                            }}
                           >
-                            <Shield size={16} />
-                            <span>
-                              {loading ? "Verifying..." : "Verify Ownership & Claim"}
-                            </span>
-                          </button>
-                        </form>
-                      )}
-                    </div>
-                  )}
+                            Verification Question:
+                          </div>
+                          "{selectedItem.verificationQuestion}"
+                        </div>
+
+                        {selectedItem.status !== "ACTIVE" ? (
+                          <div
+                            style={{
+                              padding: "12px",
+                              background: "#FFFFFF",
+                              borderRadius: "var(--radius-sm)",
+                              fontSize: "0.9rem",
+                              color: "var(--text-secondary)",
+                              textAlign: "center",
+                              border: "1px solid var(--border-subtle)"
+                            }}
+                          >
+                            This item is currently marked as{" "}
+                            <strong>{selectedItem.status}</strong> and is not open for
+                            new claims.
+                          </div>
+                        ) : (
+                          <form onSubmit={handleClaimSubmit}>
+                            <div className="form-group" style={{ marginBottom: "14px" }}>
+                              <label className="form-label">Your Answer</label>
+                              <input
+                                type="text"
+                                className="input-field input-field-noicon"
+                                placeholder="Type your verification answer..."
+                                value={claimAnswer}
+                                onChange={(e) => setClaimAnswer(e.target.value)}
+                                required
+                              />
+                              <div className="form-hint">
+                                Answers are securely checked by LostLink. The correct
+                                answer is never exposed publicly.
+                              </div>
+                            </div>
+                            <button
+                              type="submit"
+                              className="btn btn-primary-dark"
+                              style={{ width: "100%" }}
+                              disabled={loading}
+                            >
+                              <Shield size={16} />
+                              <span>
+                                {loading ? "Verifying..." : "Verify Ownership & Claim"}
+                              </span>
+                            </button>
+                          </form>
+                        )}
+                      </div>
+                    )}
                 </div>
 
                 {/* Potential Matches for Item Owner */}
@@ -1753,9 +1746,8 @@ export default function App() {
                       <div key={idx} className="match-card">
                         <div className="match-header">
                           <span
-                            className={`badge ${
-                              m.item.type === "LOST" ? "badge-lost" : "badge-found"
-                            }`}
+                            className={`badge ${m.item.type === "LOST" ? "badge-lost" : "badge-found"
+                              }`}
                           >
                             {m.item.type}
                           </span>
@@ -1817,8 +1809,8 @@ export default function App() {
                 {page === "edit"
                   ? "Update Item Details"
                   : itemForm.type === "LOST"
-                  ? "Report a Lost Item"
-                  : "Report a Found Item"}
+                    ? "Report a Lost Item"
+                    : "Report a Found Item"}
               </h1>
               <p className="section-subtitle">
                 Fill in the details below accurately to assist in matching and secure
@@ -1831,18 +1823,16 @@ export default function App() {
                 <div className="type-toggle-bar">
                   <button
                     type="button"
-                    className={`type-toggle-btn ${
-                      itemForm.type === "LOST" ? "active-lost" : ""
-                    }`}
+                    className={`type-toggle-btn ${itemForm.type === "LOST" ? "active-lost" : ""
+                      }`}
                     onClick={() => setItemForm({ ...itemForm, type: "LOST" })}
                   >
                     I Lost an Item
                   </button>
                   <button
                     type="button"
-                    className={`type-toggle-btn ${
-                      itemForm.type === "FOUND" ? "active-found" : ""
-                    }`}
+                    className={`type-toggle-btn ${itemForm.type === "FOUND" ? "active-found" : ""
+                      }`}
                     onClick={() => setItemForm({ ...itemForm, type: "FOUND" })}
                   >
                     I Found an Item
@@ -2051,8 +2041,8 @@ export default function App() {
                       {loading
                         ? "Saving Report..."
                         : page === "edit"
-                        ? "Update Report"
-                        : "Publish Report"}
+                          ? "Update Report"
+                          : "Publish Report"}
                     </span>
                   </button>
                 </div>
@@ -2140,9 +2130,8 @@ export default function App() {
             {/* Dashboard Navigation Tabs */}
             <div className="dashboard-tabs">
               <button
-                className={`dashboard-tab ${
-                  dashboardTab === "my-items" ? "active" : ""
-                }`}
+                className={`dashboard-tab ${dashboardTab === "my-items" ? "active" : ""
+                  }`}
                 onClick={() => setDashboardTab("my-items")}
               >
                 <Grid size={16} />
@@ -2151,9 +2140,8 @@ export default function App() {
               </button>
 
               <button
-                className={`dashboard-tab ${
-                  dashboardTab === "matches" ? "active" : ""
-                }`}
+                className={`dashboard-tab ${dashboardTab === "matches" ? "active" : ""
+                  }`}
                 onClick={() => setDashboardTab("matches")}
               >
                 <Sparkles size={16} />
@@ -2162,9 +2150,8 @@ export default function App() {
               </button>
 
               <button
-                className={`dashboard-tab ${
-                  dashboardTab === "claims-received" ? "active" : ""
-                }`}
+                className={`dashboard-tab ${dashboardTab === "claims-received" ? "active" : ""
+                  }`}
                 onClick={() => setDashboardTab("claims-received")}
               >
                 <ShieldCheck size={16} />
@@ -2173,9 +2160,8 @@ export default function App() {
               </button>
 
               <button
-                className={`dashboard-tab ${
-                  dashboardTab === "claims-made" ? "active" : ""
-                }`}
+                className={`dashboard-tab ${dashboardTab === "claims-made" ? "active" : ""
+                  }`}
                 onClick={() => setDashboardTab("claims-made")}
               >
                 <FileText size={16} />
@@ -2184,9 +2170,8 @@ export default function App() {
               </button>
 
               <button
-                className={`dashboard-tab ${
-                  dashboardTab === "notifications" ? "active" : ""
-                }`}
+                className={`dashboard-tab ${dashboardTab === "notifications" ? "active" : ""
+                  }`}
                 onClick={() => setDashboardTab("notifications")}
               >
                 <Bell size={16} />
@@ -2207,9 +2192,8 @@ export default function App() {
               </button>
 
               <button
-                className={`dashboard-tab ${
-                  dashboardTab === "profile" ? "active" : ""
-                }`}
+                className={`dashboard-tab ${dashboardTab === "profile" ? "active" : ""
+                  }`}
                 onClick={() => setDashboardTab("profile")}
               >
                 <User size={16} />
@@ -2219,18 +2203,16 @@ export default function App() {
               {user?.role === "admin" && (
                 <>
                   <button
-                    className={`dashboard-tab ${
-                      dashboardTab === "admin-users" ? "active" : ""
-                    }`}
+                    className={`dashboard-tab ${dashboardTab === "admin-users" ? "active" : ""
+                      }`}
                     onClick={() => setDashboardTab("admin-users")}
                   >
                     <Shield size={16} />
                     <span>Admin Users</span>
                   </button>
                   <button
-                    className={`dashboard-tab ${
-                      dashboardTab === "admin-claims" ? "active" : ""
-                    }`}
+                    className={`dashboard-tab ${dashboardTab === "admin-claims" ? "active" : ""
+                      }`}
                     onClick={() => setDashboardTab("admin-claims")}
                   >
                     <Shield size={16} />
@@ -2279,9 +2261,8 @@ export default function App() {
                           )}
                           <div className="card-badges">
                             <span
-                              className={`badge ${
-                                item.type === "LOST" ? "badge-lost" : "badge-found"
-                              }`}
+                              className={`badge ${item.type === "LOST" ? "badge-lost" : "badge-found"
+                                }`}
                             >
                               {item.type}
                             </span>
@@ -2312,13 +2293,12 @@ export default function App() {
 
                           <div className="card-footer">
                             <span
-                              className={`status-pill ${
-                                item.status === "ACTIVE"
+                              className={`status-pill ${item.status === "ACTIVE"
                                   ? "active"
                                   : item.status === "CLAIMED"
-                                  ? "claimed"
-                                  : "returned"
-                              }`}
+                                    ? "claimed"
+                                    : "returned"
+                                }`}
                             >
                               <span className="status-pill-dot"></span>
                               {item.status}
@@ -2391,11 +2371,10 @@ export default function App() {
                           <div key={mIdx} className="match-card">
                             <div className="match-header">
                               <span
-                                className={`badge ${
-                                  m.item.type === "LOST"
+                                className={`badge ${m.item.type === "LOST"
                                     ? "badge-lost"
                                     : "badge-found"
-                                }`}
+                                  }`}
                               >
                                 {m.item.type}
                               </span>
@@ -2531,13 +2510,12 @@ export default function App() {
                             </h3>
                           </div>
                           <span
-                            className={`status-pill ${
-                              claim.status === "APPROVED"
+                            className={`status-pill ${claim.status === "APPROVED"
                                 ? "returned"
                                 : claim.status === "PENDING"
-                                ? "active"
-                                : "claimed"
-                            }`}
+                                  ? "active"
+                                  : "claimed"
+                              }`}
                           >
                             <span className="status-pill-dot"></span>
                             {claim.status}
@@ -2649,13 +2627,12 @@ export default function App() {
                             </p>
                           </div>
                           <span
-                            className={`status-pill ${
-                              claim.status === "APPROVED"
+                            className={`status-pill ${claim.status === "APPROVED"
                                 ? "returned"
                                 : claim.status === "PENDING"
-                                ? "active"
-                                : "claimed"
-                            }`}
+                                  ? "active"
+                                  : "claimed"
+                              }`}
                           >
                             <span className="status-pill-dot"></span>
                             {claim.status}
@@ -2966,13 +2943,12 @@ export default function App() {
                         </div>
                       </div>
                       <span
-                        className={`status-pill ${
-                          ac.status === "APPROVED"
+                        className={`status-pill ${ac.status === "APPROVED"
                             ? "returned"
                             : ac.status === "PENDING"
-                            ? "active"
-                            : "claimed"
-                        }`}
+                              ? "active"
+                              : "claimed"
+                          }`}
                       >
                         {ac.status}
                       </span>
