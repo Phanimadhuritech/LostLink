@@ -41,7 +41,7 @@ import {
 } from "lucide-react";
 
 // API Base configuration
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://lostlink-zoua.onrender.com";
 
 export default function App() {
   // Authentication states
@@ -1076,7 +1076,7 @@ export default function App() {
                       <div className="card-image-wrap">
                         {item.image ? (
                           <img
-                            src={`http://localhost:5000${item.image}`}
+                            src={`https://lostlink-zoua.onrender.com${item.image}`}
                             alt={item.title}
                             className="card-img"
                           />
@@ -1304,7 +1304,7 @@ export default function App() {
                       <div className="card-image-wrap">
                         {item.image ? (
                           <img
-                            src={`http://localhost:5000${item.image}`}
+                            src={`https://lostlink-zoua.onrender.com${item.image}`}
                             alt={item.title}
                             className="card-img"
                           />
@@ -1431,13 +1431,13 @@ export default function App() {
                 <div className="detail-main-img-wrap">
                   {selectedItem.images && selectedItem.images.length > 0 ? (
                     <img
-                      src={`http://localhost:5000${selectedItem.images[activeImageIndex]}`}
+                      src={`https://lostlink-zoua.onrender.com${selectedItem.images[activeImageIndex]}`}
                       alt={selectedItem.title}
                       className="detail-main-img"
                     />
                   ) : selectedItem.image ? (
                     <img
-                      src={`http://localhost:5000${selectedItem.image}`}
+                      src={`https://lostlink-zoua.onrender.com${selectedItem.image}`}
                       alt={selectedItem.title}
                       className="detail-main-img"
                     />
@@ -1455,7 +1455,7 @@ export default function App() {
                     {selectedItem.images.map((img, idx) => (
                       <img
                         key={idx}
-                        src={`http://localhost:5000${img}`}
+                        src={`https://lostlink-zoua.onrender.com${img}`}
                         alt="thumb"
                         className={`detail-thumb ${
                           activeImageIndex === idx ? "active" : ""
@@ -2267,7 +2267,7 @@ export default function App() {
                         <div className="card-image-wrap">
                           {item.image ? (
                             <img
-                              src={`http://localhost:5000${item.image}`}
+                              src={`https://lostlink-zoua.onrender.com${item.image}`}
                               alt={item.title}
                               className="card-img"
                             />
